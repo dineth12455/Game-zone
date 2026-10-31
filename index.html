@@ -1,1 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0d">
+  <meta name="description" content="Discover PC games and visit official download or store pages.">
+  <title>GameVault | PC Games</title>
+  <style>
+    :root {
+      --bg:#0a0a0d; --panel:#141419; --red:#ff303c;
+      --text:#f5f5f7; --muted:#a5a5b1; --border:#2c2c35;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Arial,Helvetica,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    header { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 7%; background:#0a0a0df2; border-bottom:1px solid var(--border); backdrop-filter:blur(12px); }
+    .logo { font-size:25px; font-weight:900; letter-spacing:-1px; }
+    .logo span,h1 span { color:var(--red); }
+    nav { display:flex; gap:22px; }
+    nav a { color:#ddd; font-size:14px; }
+    nav a:hover { color:var(--red); }
+    .hero { min-height:330px; display:grid; place-items:center; text-align:center; padding:65px 20px; background:radial-gradient(ellipse at 50% 0%,#8c111d55,transparent 65%),linear-gradient(180deg,#151015,var(--bg)); border-bottom:1px solid var(--border); }
+    .tag { display:inline-block; border:1px solid #ff303c66; border-radius:30px; padding:8px 13px; color:#ff7780; font-size:12px; letter-spacing:1px; }
+    h1 { font-size:clamp(38px,7vw,66px); margin:20px 0 12px; line-height:1.05; }
+    .hero p { max-width:570px; color:var(--muted); line-height:1.7; margin:0 auto; }
+    .button { display:inline-block; background:var(--red); color:white; font-weight:bold; padding:12px 18px; border:0; border-radius:7px; cursor:pointer; transition:.2s; }
+    .button:hover { background:#d91c29; transform:translateY(-2px); }
+    .hero .button { margin-top:23px; }
+    main { max-width:1200px; padding:48px 22px; margin:auto; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:18px; margin-bottom:25px; }
+    h2 { margin:0 0 8px; font-size:28px; }
+    .muted { color:var(--muted); font-size:14px; }
+    .controls { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+    input,select { min-height:44px; background:var(--panel); color:white; border:1px solid var(--border); border-radius:7px; padding:11px 13px; font-size:14px; }
+    input { flex:1; min-width:190px; }
+    select { min-width:155px; }
+    input:focus,select:focus { outline:1px solid var(--red); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    .game-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:.2s; }
+    .game-card:hover { transform:translateY(-5px); border-color:#ff303c99; }
+    .game-art { height:155px; display:grid; place-items:center; font-size:66px; background:radial-gradient(circle at 50% 30%,#ffffff13,transparent 55%),linear-gradient(135deg,var(--art1),var(--art2)); }
+    .game-info { padding:19px; }
+    .category { color:#ff7a83; font-size:11px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; }
+    .game-info h3 { margin:10px 0; font-size:20px; }
+    .game-info p { color:var(--muted); line-height:1.6; font-size:13px; min-height:63px; }
+    .card-bottom { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:18px; flex-wrap:wrap; }
+    .label { color:#ffd27a; font-size:10px; font-weight:bold; }
+    .label.free { color:#78e6a2; }
+    .card-bottom .button { font-size:12px; padding:10px 12px; }
+    .empty { display:none; color:var(--muted); text-align:center; padding:50px 10px; }
+    .notice { margin-top:35px; padding:18px; border:1px solid var(--border); border-radius:10px; color:var(--muted); font-size:13px; line-height:1.7; }
+    footer { border-top:1px solid var(--border); text-align:center; padding:28px 15px; color:var(--muted); font-size:13px; line-height:1.8; }
+    footer strong { color:var(--red); }
+    @media(max-width:850px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:560px) { header { padding:16px 5%; } .logo { font-size:21px; } nav { gap:12px; } nav a { font-size:12px; } .grid { grid-template-columns:1fr; } .game-art { height:175px; } .section-head { align-items:start; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#">GAME<span>VAULT</span></a>
+    <nav><a href="#">Home</a><a href="#games">Games</a><a href="#about">About</a></nav>
+  </header>
 
+  <section class="hero">
+    <div>
+      <span class="tag">YOUR NEXT GAME STARTS HERE</span>
+      <h1>ENTER THE <span>GAMEVAULT</span></h1>
+      <p>Discover PC games, explore the collection, and visit official download or store pages.</p>
+      <a class="button" href="#games">EXPLORE GAMES ↓</a>
+    </div>
+  </section>
+
+  <main id="games">
+    <div class="section-head">
+      <div><h2>Game Collection</h2><div class="muted">Search and explore your next adventure.</div></div>
+      <div class="muted" id="count">18 games</div>
+    </div>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search games..." aria-label="Search games">
+      <select id="category" aria-label="Filter by category">
+        <option value="all">All Categories</option>
+        <option value="Racing">Racing</option><option value="Strategy">Strategy</option>
+        <option value="Platformer">Platformer</option><option value="FPS">FPS</option>
+        <option value="Sandbox">Sandbox</option><option value="Simulation">Simulation</option>
+      </select>
+    </div>
+    <div class="grid" id="gameGrid"></div>
+    <div class="empty" id="empty">No games found. Try another search.</div>
+    <section class="notice" id="about">
+      <strong>About GameVault</strong><br>
+      GameVault is a game discovery directory. Buttons open official developer or store pages; this site does not host the game files. Paid games may require purchase. Check each game's system requirements and license before downloading.
+    </section>
+  </main>
+  <footer><strong>GAMEVAULT</strong> — Discover. Download. Play.<br>Game names and trademarks belong to their respective owners.<br>© <span id="year"></span> GameVault</footer>
+
+  <script>
+    const games = [
+      {
+        name:"SuperTuxKart", category:"Racing", icon:"🏎️", colors:["#64151c","#17171d"],
+        description:"A fun kart racing game with tracks, characters and multiplayer.",
+        label:"FREE / OFFICIAL", free:true, link:"https://supertuxkart.net/Download"
+      },
+      {
+        name:"0 A.D.", category:"Strategy", icon:"🏛️", colors:["#725020","#19120c"],
+        description:"Build your civilization and command armies in an ancient world.",
+        label:"FREE / OFFICIAL", free:true, link:"https://play0ad.com/download/"
+      },
+      {
+        name:"SuperTux", category:"Platformer", icon:"🐧", colors:["#174c70","#101820"],
+        description:"A classic-style 2D platform adventure starring Tux.",
+        label:"FREE / OFFICIAL", free:true, link:"https://www.supertux.org/download.html"
+      },
+      {
+        name:"Xonotic", category:"FPS", icon:"🎯", colors:["#6a1717","#151515"],
+        description:"A fast-paced, free and open-source arena shooter.",
+        label:"FREE / OFFICIAL", free:true, link:"https://xonotic.org/download/"
+      },
+      {
+        name:"Luanti", category:"Sandbox", icon:"🌍", colors:["#245d3c","#101a14"],
+        description:"Explore and create block-based worlds with community games.",
+        label:"FREE / OFFICIAL", free:true, link:"https://www.luanti.org/downloads/"
+      },
+      {
+        name:"OpenTTD", category:"Simulation", icon:"🚂", colors:["#785020","#1b1711"],
+        description:"Build transport networks and manage a growing business.",
+        label:"FREE / OFFICIAL", free:true, link:"https://www.openttd.org/downloads/openttd-releases/latest"
+      },
+      {
+        name:"Far Cry 1", category:"FPS", icon:"🌴", colors:["#6d1b24","#151515"],
+        description:"The original tropical island action adventure. Store availability may vary.",
+        label:"CHECK STORE", link:"https://store.ubisoft.com/"
+      },
+      {
+        name:"Far Cry 2", category:"FPS", icon:"🔥", colors:["#763d18","#171313"],
+        description:"An open-world action adventure set in Africa.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Far+Cry+2"
+      },
+      {
+        name:"Far Cry 3", category:"FPS", icon:"🌴", colors:["#8b1e1e","#151515"],
+        description:"Explore a tropical island in this open-world adventure.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Far+Cry+3"
+      },
+      {
+        name:"Far Cry 4", category:"FPS", icon:"🏔️", colors:["#8b3030","#171313"],
+        description:"Explore the mountainous region of Kyrat.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Far+Cry+4"
+      },
+      {
+        name:"Far Cry 5", category:"FPS", icon:"🌲", colors:["#52613a","#151515"],
+        description:"Explore Hope County in this open-world action adventure.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Far+Cry+5"
+      },
+      {
+        name:"Far Cry 6", category:"FPS", icon:"🔥", colors:["#a52a2a","#151515"],
+        description:"Fight across the island of Yara in this open-world action game.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Far+Cry+6"
+      },
+      {
+        name:"Assassin's Creed Freedom Cry", category:"Action", icon:"🏴‍☠️", colors:["#263d50","#111820"],
+        description:"A standalone adventure following Adewale in the Assassin's Creed universe.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Assassins+Creed+Freedom+Cry"
+      },
+      {
+        name:"Call of Duty", category:"FPS", icon:"🎖️", colors:["#59513a","#151515"],
+        description:"The original 2003 Call of Duty game.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/app/2620/Call_of_Duty_2003/"
+      },
+      {
+        name:"Call of Duty 2", category:"FPS", icon:"🎖️", colors:["#64503a","#151515"],
+        description:"The classic World War II Call of Duty game.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/app/2630/Call_of_Duty_2/"
+      },
+      {
+        name:"Call of Duty 3", category:"FPS", icon:"🪖", colors:["#55513b","#151515"],
+        description:"A World War II entry; no original Windows PC release.",
+        label:"PC VERSION UNAVAILABLE", link:"https://www.callofduty.com/"
+      },
+      {
+        name:"Call of Duty 4: Modern Warfare", category:"FPS", icon:"🌆", colors:["#444444","#151515"],
+        description:"The original 2007 Modern Warfare game.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/app/7940/Call_of_Duty_4_Modern_Warfare/"
+      },
+      {
+        name:"Call of Duty: Modern Warfare 2 (2009)", category:"FPS", icon:"🌃", colors:["#454545","#151515"],
+        description:"The original 2009 Modern Warfare sequel.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/app/10180/Call_of_Duty_Modern_Warfare_2/"
+      },
+      {
+        name:"Call of Duty: Modern Warfare 3 (2011)", category:"FPS", icon:"🏙️", colors:["#62302c","#151515"],
+        description:"The original 2011 Modern Warfare sequel.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Call+of+Duty+Modern+Warfare+3+2011"
+      },
+      {
+        name:"Call of Duty: Black Ops", category:"FPS", icon:"🕶️", colors:["#6b2020","#151515"],
+        description:"The original Black Ops game released in 2010.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Call+of+Duty+Black+Ops"
+      },
+      {
+        name:"Call of Duty: Black Ops II", category:"FPS", icon:"⚡", colors:["#7b2828","#151515"],
+        description:"The Black Ops sequel released in 2012.",
+        label:"CHECK STORE", link:"https://store.steampowered.com/search/?term=Call+of+Duty+Black+Ops+II"
+      }
+    ];
+
+    const grid = document.getElementById("gameGrid");
+    const search = document.getElementById("search");
+    const category = document.getElementById("category");
+    const count = document.getElementById("count");
+    const empty = document.getElementById("empty");
+
+    function renderGames() {
+      const query = search.value.trim().toLowerCase();
+      const selected = category.value;
+      const filtered = games.filter(game =>
+        game.name.toLowerCase().includes(query) &&
+        (selected === "all" || game.category === selected)
+      );
+
+      grid.innerHTML = filtered.map(game => `
+        <article class="game-card">
+          <div class="game-art" style="--art1:${game.colors[0]};--art2:${game.colors[1]}">
+            <span aria-hidden="true">${game.icon}</span>
+          </div>
+          <div class="game-info">
+            <span class="category">${game.category}</span>
+            <h3>${game.name}</h3>
+            <p>${game.description}</p>
+            <div class="card-bottom">
+              <span class="label ${game.free ? "free" : ""}">${game.label || "OFFICIAL GAME PAGE"}</span>
+              <a class="button" href="${game.link}" target="_blank" rel="noopener noreferrer">
+                ${game.free ? "DOWNLOAD ↗" : "STORE ↗"}
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      count.textContent = `${filtered.length} game${filtered.length === 1 ? "" : "s"}`;
+      empty.style.display = filtered.length ? "none" : "block";
+    }
+
+    search.addEventListener("input", renderGames);
+    category.addEventListener("change", renderGames);
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderGames();
+  </script>
+</body>
+</html>
